@@ -8,6 +8,7 @@ const (
 
 type Context struct {
 	Session *ghttp.Session
+	User    *ContextUser
 }
 
 type ContextUser struct {
