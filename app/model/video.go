@@ -11,4 +11,8 @@ import (
 // Video is the golang structure for table video.
 type Video internal.Video
 
-// Fill with you ideas below.
+type VideoApiListReq struct {
+	Page  int `v:"#页码不能为空"`
+	Limit int `v:"#每页数据最少不少于5条，最多不大于50"`
+	Type  string
+}
