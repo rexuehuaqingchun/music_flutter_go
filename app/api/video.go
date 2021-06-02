@@ -10,5 +10,5 @@ type videoApi struct {
 }
 
 func (*videoApi) Index(r *ghttp.Request) {
-	r.Response.Writeln("")
+	r.Response.Writeln("video list")
 }
