@@ -16,3 +16,17 @@ type VideoApiListReq struct {
 	Limit int `v:"#每页数据最少不少于5条，最多不大于50"`
 	Type  string
 }
+
+type VideoListItem struct {
+	Id              uint   `json:"id"`
+	UserId          uint   `json:"user_id"`
+	CoverPictureUrl string `json:"cover_picture_url"`
+	VideoUrl        string `json:"video_url"`
+	Title           string `json:"title"`
+	Intro           string `json:"intro"`
+	CommentCount    uint   `json:"comment_count"`
+	ThumbUpCount    uint   `json:"thumb_up_count"`
+	ReadCount       uint   `json:"read_count"`
+	ShareCount      uint   `json:"share_count"`
+	ContentSeconds  uint   `json:"content_seconds"`
+}

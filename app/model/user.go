@@ -12,3 +12,17 @@ import (
 type User internal.User
 
 // Fill with you ideas below.
+type UserApiListReq struct {
+	Page  int `v:"#页码不能为空"`
+	Limit int `v:"#每页数据最少不少于5条，最多不大于50"`
+	Type  string
+}
+
+type UserListItem struct {
+	Id              uint   `json:"id"`
+	CoverPictureUrl string `json:"cover_picture_url"`
+	Nickname        string `json:"nickname"`
+	Type            string `json:"type"`
+	MusicCount      uint   `json:"music_count"`
+	MusicPlayCount  uint   `json:"music_play_count"`
+}

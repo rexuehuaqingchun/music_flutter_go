@@ -1,8 +1,7 @@
 package service
 
 import (
-	"errors"
-	"fmt"
+	"music/app/dao"
 	"music/app/model"
 )
 
@@ -11,9 +10,11 @@ type videoService struct {
 
 var Video = videoService{}
 
-func (v videoService) List(r *model.VideoApiListReq) error {
-	if r.Page < 0 {
-		return errors.New(fmt.Sprintf("页码 %s 不能小于0", r.Page))
+func (s videoService) List(r *model.VideoApiListReq) error {
+
+	fields := dao.Video.Fields(model.VideoListItem{})
+	if r.Type != "" {
+		fields.Where(dao.Video.Columns.CommentCount)
 	}
 	return nil
 }
