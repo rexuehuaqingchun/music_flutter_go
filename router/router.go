@@ -12,10 +12,12 @@ func init() {
 	s.Group("/", func(group *ghttp.RouterGroup) {
 		group.Middleware(service.Middleware.Ctx)
 		group.ALLMap(g.Map{
-			"/user":        api.UserApi,
-			"/user/:info":  api.UserApi.Info,
-			"/video":       api.Video,
-			"/video/:info": api.Video.Info,
+			"/user":          api.UserApi,
+			"/user/:info":    api.UserApi.Info,
+			"/video":         api.Video,
+			"/video/:info":   api.Video.Info,
+			"/article":       api.ArticleApi,
+			"/article/:info": api.ArticleApi.Info,
 		})
 	})
 }
