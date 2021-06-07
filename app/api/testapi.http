@@ -1,1 +1,24 @@
+POST http://localhost:8198/recommend/list
+Content-Type: application/json
+
+{
+  "page": 1,
+  "limit": 10
+}
+
+###
+POST http://localhost:8198/video/list
+Content-Type: application/json
+
+{
+  "page": 1,
+  "limit": 10
+}
+
+###
 POST http://localhost:8199/user/list
+
+{
+  "page": 999,
+  "value": "content"
+}

@@ -9,6 +9,15 @@ type UserServiceGetListRes struct {
 	Total int                   `json:"total"` // 数据总数
 }
 
+type RecommendServiceGetListRes struct {
+	UserList    []*model.UserListItem    `json:"user_list"`
+	VideoList   []*model.VideoListItem   `json:"video_list"`
+	ArticleList []*model.ArticleListItem `json:"article_list"`
+	Page        int                      `json:"page"`  // 分页码
+	Size        int                      `json:"size"`  // 分页数量
+	Total       int                      `json:"total"` // 数据总数
+}
+
 type UserInfo struct {
 	Info *model.UserListItem `json:"info"`
 }

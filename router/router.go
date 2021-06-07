@@ -18,6 +18,7 @@ func init() {
 			"/video/:info":   api.Video.Info,
 			"/article":       api.ArticleApi,
 			"/article/:info": api.ArticleApi.Info,
+			"/recommend":     api.Recommend,
 		})
 	})
 }
