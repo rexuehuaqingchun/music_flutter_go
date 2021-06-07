@@ -11,7 +11,11 @@ func init() {
 	s := g.Server()
 	s.Group("/", func(group *ghttp.RouterGroup) {
 		group.Middleware(service.Middleware.Ctx)
-		group.ALL("/hello", api.Hello)
-		group.ALL("/video", api.Video)
+		group.ALLMap(g.Map{
+			"/user":        api.UserApi,
+			"/user/:info":  api.UserApi.Info,
+			"/video":       api.Video,
+			"/video/:info": api.Video.Info,
+		})
 	})
 }

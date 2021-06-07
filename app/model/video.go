@@ -12,9 +12,12 @@ import (
 type Video internal.Video
 
 type VideoApiListReq struct {
-	Page  int `v:"#页码不能为空"`
-	Limit int `v:"#每页数据最少不少于5条，最多不大于50"`
-	Type  string
+	Page  int `v:"required|min:1#页码不能为空|页面最小为1"`
+	Limit int `v:"required|min:5|max:10#必须指定每页的数据量|每页数据最少不少于5条，最多不大于50|每页数据最少不少于5条，最多不大于50"`
+}
+
+type VideoApiInfoReq struct {
+	VideoId uint `v:"required#视频id不能为空"`
 }
 
 type VideoListItem struct {

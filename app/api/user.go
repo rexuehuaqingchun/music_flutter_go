@@ -9,7 +9,7 @@ import (
 	"music/library/response"
 )
 
-var Hello = userApi{}
+var UserApi = userApi{}
 
 type userApi struct{}
 
@@ -34,4 +34,18 @@ func (*userApi) List(r *ghttp.Request) {
 		response.JsonExit(r, 0, "", list)
 	}
 
+}
+
+func (*userApi) Info(r *ghttp.Request) {
+	var (
+		reqData *model.UserApiInfoReq
+	)
+	if err := r.Parse(&reqData); err != nil {
+		response.JsonExit(r, 1, err.Error())
+	}
+	if info, err := service.User.Info(reqData); err != nil {
+		response.JsonExit(r, 0, err.Error())
+	} else {
+		response.JsonExit(r, 0, "", info)
+	}
 }

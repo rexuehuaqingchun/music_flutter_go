@@ -1,6 +1,7 @@
 package service
 
 import (
+	"github.com/gogf/gf/frame/g"
 	"music/app/dao"
 	"music/app/model"
 	"music/app/model/define"
@@ -16,9 +17,12 @@ func (s userService) List(r *model.UserApiListReq) (*define.UserServiceGetListRe
 
 	m := dao.User.Fields(model.UserListItem{})
 
-	constant.DetectionUserRoles(r.Type)
-
 	listModel := m.Page(r.Page, r.Limit)
+
+	if constant.DetectionUserRoles(r.Type) {
+		listModel = listModel.Where("type", r.Type)
+	}
+
 	total, err := m.Fields("*").Count()
 	if err != nil {
 		return nil, err
@@ -29,8 +33,18 @@ func (s userService) List(r *model.UserApiListReq) (*define.UserServiceGetListRe
 		Total: total,
 	}
 
-	if err := listModel.ScanList(&getListRes.List, "Content"); err != nil {
+	if err := listModel.Structs(&getListRes.List); err != nil {
 		return nil, err
 	}
 	return getListRes, nil
+}
+
+func (s userService) Info(r *model.UserApiInfoReq) (*define.UserInfo, error) {
+	infoModel, err := dao.User.Where(g.Map{"id": r.Uid}).One()
+	infoRes := &define.UserInfo{}
+	infoModel.Struct(&infoRes.Info)
+	if err != nil {
+		return infoRes, err
+	}
+	return infoRes, err
 }
