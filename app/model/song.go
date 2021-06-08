@@ -12,3 +12,24 @@ import (
 type Song internal.Song
 
 // Fill with you ideas below.
+
+type SongApiListReq struct {
+	Page  int `v:"required|min:1#页码不能为空|页面最小为1"`
+	Limit int `v:"required|min:5|max:10#必须指定每页的数据量|每页数据最少不少于5条，最多不大于50|每页数据最少不少于5条，最多不大于50"`
+}
+
+type SongApiInfoReq struct {
+	SongId uint `v:"required#歌曲id不能为空"`
+}
+
+type SongListItem struct {
+	Id              uint   `json:"id"`
+	UserId          uint   `json:"user_id"`
+	CoverPictureUrl string `json:"cover_picture_url"`
+	SongUrl         string `json:"video_url"`
+	CnName          string `json:"cn_name"`
+	EnName          string `json:"en_name"`
+	CommentCount    uint   `json:"comment_count"`
+	ThumbUpCount    uint   `json:"thumb_up_count"`
+	ReadCount       uint   `json:"read_count"`
+}

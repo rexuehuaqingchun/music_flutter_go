@@ -7,34 +7,34 @@ import (
 	"music/library/response"
 )
 
-var Video = videoApi{}
+var Song = songApi{}
 
-type videoApi struct {
+type songApi struct {
 }
 
-func (*videoApi) List(r *ghttp.Request) {
+func (*songApi) List(r *ghttp.Request) {
 	var (
-		reqData *model.VideoApiListReq
+		reqData *model.SongApiListReq
 	)
 	if err := r.Parse(&reqData); err != nil {
 		response.JsonExit(r, 1, err.Error())
 	}
 
-	if list, err := service.Video.List(reqData); err != nil {
+	if list, err := service.Song.List(reqData); err != nil {
 		response.JsonExit(r, 0, err.Error())
 	} else {
 		response.JsonExit(r, 0, "", list)
 	}
 }
 
-func (*videoApi) Info(r *ghttp.Request) {
+func (*songApi) Info(r *ghttp.Request) {
 	var (
-		reqData *model.VideoApiInfoReq
+		reqData *model.SongApiInfoReq
 	)
 	if err := r.Parse(&reqData); err != nil {
 		response.JsonExit(r, 1, err.Error())
 	}
-	if info, err := service.Video.Info(reqData); err != nil {
+	if info, err := service.Song.Info(reqData); err != nil {
 		response.JsonExit(r, 0, err.Error())
 	} else {
 		response.JsonExit(r, 0, "", info)
