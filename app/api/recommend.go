@@ -20,6 +20,5 @@ func (*recommendApi) List(r *ghttp.Request) {
 		response.JsonExit(r, 1, err.Error())
 	}
 
-	service.Recommend.List(reqData)
-
+	response.JsonExit(r, 0, "", service.Recommend.List(reqData))
 }

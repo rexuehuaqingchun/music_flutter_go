@@ -32,3 +32,22 @@ type QueryVideoListItem struct {
 	ContentSeconds  uint       `json:"content_seconds"`
 	User            *QueryUser `orm:"with:id=UserId"`
 }
+
+type QueryArticleListItem struct {
+	gmeta.Meta   `orm:"table:article"`
+	Id           uint       `json:"id"`
+	UserId       uint       `json:"user_id"`
+	coverUrlList string     `json:"cover_url_list"`
+	Title        string     `json:"title"`
+	CommentCount string     `json:"comment_count"`
+	thumbUpCount uint       `json:"thumb_up_count"`
+	readCount    uint       `json:"read_count"`
+	User         *QueryUser `orm:"with:id=UserId"`
+}
+
+type QueryRecommendListItem struct {
+	Type        string               `json:"type"`
+	UserList    UserListItem         `json:"user_entry"`
+	VideoList   QueryVideoListItem   `json:"video_list"`
+	ArticleList QueryArticleListItem `json:"article_list"`
+}
