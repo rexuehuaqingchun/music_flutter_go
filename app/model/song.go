@@ -24,12 +24,12 @@ type SongApiInfoReq struct {
 
 type SongListItem struct {
 	Id              uint   `json:"id"`
-	UserId          uint   `json:"user_id"`
-	CoverPictureUrl string `json:"cover_picture_url"`
-	SongUrl         string `json:"video_url"`
-	CnName          string `json:"cn_name"`
-	EnName          string `json:"en_name"`
-	CommentCount    uint   `json:"comment_count"`
-	ThumbUpCount    uint   `json:"thumb_up_count"`
-	ReadCount       uint   `json:"read_count"`
+	UserId          uint   `json:"userId"`
+	CoverPictureUrl string `json:"coverPictureUrl"`
+	SongUrl         string `json:"songUrl"`
+	CnName          string `json:"cnName"`
+	EnName          string `json:"enName"`
+	CommentCount    uint   `json:"commentCount"`
+	ThumbUpCount    uint   `json:"thumbUpCount"`
+	ReadCount       uint   `json:"readCount"`
 }

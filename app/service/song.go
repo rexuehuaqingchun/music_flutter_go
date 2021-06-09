@@ -27,7 +27,6 @@ func (s songService) List(r *model.SongApiListReq) (*define.SongServiceGetListRe
 		Size:  r.Limit,
 		Total: total,
 	}
-
 	if err := listModel.Structs(&getListRes.List); err != nil {
 		return nil, err
 	}
