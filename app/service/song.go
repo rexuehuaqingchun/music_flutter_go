@@ -15,9 +15,6 @@ var Song = songService{}
 func (s songService) List(r *model.SongApiListReq) (*define.SongServiceGetListRes, error) {
 
 	m := dao.Song.Fields(model.Video{})
-
-	listModel := m.Page(r.Page, r.Limit)
-
 	total, err := m.Fields("*").Count()
 	if err != nil {
 		return nil, err
@@ -27,9 +24,7 @@ func (s songService) List(r *model.SongApiListReq) (*define.SongServiceGetListRe
 		Size:  r.Limit,
 		Total: total,
 	}
-	if err := listModel.Structs(&getListRes.List); err != nil {
-		return nil, err
-	}
+	dao.Song.With(model.QueryUser{}).Page(r.Page, r.Limit).Scan(&getListRes.List)
 	return getListRes, nil
 }
 
