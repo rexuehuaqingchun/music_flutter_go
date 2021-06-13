@@ -22,3 +22,11 @@ POST http://localhost:8198/song/list
   "page": 1,
   "limit": "10"
 }
+
+###
+POST http://localhost:8198/user/list
+
+{
+  "page": 1,
+  "limit": "10"
+}

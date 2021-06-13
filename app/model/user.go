@@ -24,9 +24,9 @@ type UserApiInfoReq struct {
 
 type UserListItem struct {
 	Id              uint   `json:"id"`
-	CoverPictureUrl string `json:"cover_picture_url"`
+	CoverPictureUrl string `json:"coverPictureUrl"`
 	Nickname        string `json:"nickname"`
 	Type            string `json:"type"`
-	MusicCount      uint   `json:"music_count"`
-	MusicPlayCount  uint   `json:"music_play_count"`
+	MusicCount      uint   `json:"musicCount"`
+	MusicPlayCount  uint   `json:"musicPlayCount"`
 }
