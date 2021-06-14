@@ -16,7 +16,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:8198/song/list
+POST http://localhost:8198/video/list
 
 {
   "page": 1,
@@ -25,6 +25,14 @@ POST http://localhost:8198/song/list
 
 ###
 POST http://localhost:8198/user/list
+
+{
+  "page": 1,
+  "limit": "10"
+}
+
+###
+POST http://localhost:8198/article/list
 
 {
   "page": 1,

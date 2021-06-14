@@ -5,6 +5,7 @@
 package model
 
 import (
+	"github.com/gogf/gf/util/gmeta"
 	"music/app/model/internal"
 )
 
@@ -23,11 +24,13 @@ type ArticleApiInfoReq struct {
 }
 
 type ArticleListItem struct {
-	Id           uint   `json:"id"`
-	Uid          uint   `json:"uid"`
-	coverUrlList string `json:"cover_url_list"`
-	Title        string `json:"title"`
-	CommentCount string `json:"comment_count"`
-	thumbUpCount uint   `json:"thumb_up_count"`
-	readCount    uint   `json:"read_count"`
+	gmeta.Meta   `orm:"table:article"`
+	Id           uint       `json:"id"`
+	UserId       uint       `json:"userId"`
+	CoverUrlList string     `json:"coverUrlList"`
+	Title        string     `json:"title"`
+	CommentCount uint       `json:"commentCount"`
+	ThumbUpCount uint       `json:"thumbUpCount"`
+	ReadCount    uint       `json:"readCount"`
+	User         *QueryUser `orm:"with:id=UserId"`
 }

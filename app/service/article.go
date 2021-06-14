@@ -16,8 +16,6 @@ func (s articleService) List(r *model.ArticleApiListReq) (*define.ArticleService
 
 	m := dao.Article.Fields(model.Article{})
 
-	listModel := m.Page(r.Page, r.Limit)
-
 	total, err := m.Fields("*").Count()
 	if err != nil {
 		return nil, err
@@ -27,10 +25,8 @@ func (s articleService) List(r *model.ArticleApiListReq) (*define.ArticleService
 		Size:  r.Limit,
 		Total: total,
 	}
+	dao.Article.With(model.QueryUser{}).Page(r.Page, r.Limit).Scan(&getListRes.List)
 
-	if err := listModel.Structs(&getListRes.List); err != nil {
-		return nil, err
-	}
 	return getListRes, nil
 }
 

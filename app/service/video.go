@@ -27,7 +27,7 @@ func (s videoService) List(r *model.VideoApiListReq) (*define.VideoServiceGetLis
 		Size:  r.Limit,
 		Total: total,
 	}
-
+	dao.Video.With(model.QueryUser{}).Page(r.Page, r.Limit).Scan(&getListRes.List)
 	if err := listModel.Structs(&getListRes.List); err != nil {
 		return nil, err
 	}

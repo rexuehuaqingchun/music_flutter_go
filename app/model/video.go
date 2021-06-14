@@ -5,6 +5,7 @@
 package model
 
 import (
+	"github.com/gogf/gf/util/gmeta"
 	"music/app/model/internal"
 )
 
@@ -21,15 +22,17 @@ type VideoApiInfoReq struct {
 }
 
 type VideoListItem struct {
-	Id              uint   `json:"id"`
-	UserId          uint   `json:"user_id"`
-	CoverPictureUrl string `json:"cover_picture_url"`
-	VideoUrl        string `json:"video_url"`
-	Title           string `json:"title"`
-	Intro           string `json:"intro"`
-	CommentCount    uint   `json:"comment_count"`
-	ThumbUpCount    uint   `json:"thumb_up_count"`
-	ReadCount       uint   `json:"read_count"`
-	ShareCount      uint   `json:"share_count"`
-	ContentSeconds  uint   `json:"content_seconds"`
+	gmeta.Meta      `orm:"table:video"`
+	Id              uint       `json:"id"`
+	UserId          uint       `json:"userId"`
+	CoverPictureUrl string     `json:"coverPictureUrl"`
+	VideoUrl        string     `json:"videoUrl"`
+	Title           string     `json:"title"`
+	Intro           string     `json:"intro"`
+	CommentCount    uint       `json:"commentCount"`
+	ThumbUpCount    uint       `json:"thumbUpCount"`
+	ReadCount       uint       `json:"readCount"`
+	ShareCount      uint       `json:"shareCount"`
+	ContentSeconds  uint       `json:"contentSeconds"`
+	User            *QueryUser `orm:"with:id=UserId"`
 }

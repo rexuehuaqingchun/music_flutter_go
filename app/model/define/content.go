@@ -23,10 +23,10 @@ type UserInfo struct {
 }
 
 type VideoServiceGetListRes struct {
-	List  []*model.VideoListItem `json:"list"`  // 列表
-	Page  int                    `json:"page"`  // 分页码
-	Size  int                    `json:"size"`  // 分页数量
-	Total int                    `json:"total"` // 数据总数
+	List  []model.VideoListItem `json:"list"`  // 列表
+	Page  int                   `json:"page"`  // 分页码
+	Size  int                   `json:"size"`  // 分页数量
+	Total int                   `json:"total"` // 数据总数
 }
 type SongServiceGetListRes struct {
 	List  []model.SongListItem `json:"list"`  // 列表
@@ -44,10 +44,10 @@ type SongInfo struct {
 }
 
 type ArticleServiceGetListRes struct {
-	List  []*model.ArticleListItem `json:"list"`  // 列表
-	Page  int                      `json:"page"`  // 分页码
-	Size  int                      `json:"size"`  // 分页数量
-	Total int                      `json:"total"` // 数据总数
+	List  []model.ArticleListItem `json:"list"`  // 列表
+	Page  int                     `json:"page"`  // 分页码
+	Size  int                     `json:"size"`  // 分页数量
+	Total int                     `json:"total"` // 数据总数
 }
 
 type ArticleInfo struct {
